@@ -20,11 +20,10 @@ const QuoteDetail = () => {
   const params = useParams();
 
   const quote = DUMMY_DATA.find((quote) => quote.id === params.quoteId);
-  console.log(quote);
+
   return (
     <>
-      <h1>Quote Detail page</h1>
-      <p>{params.quoteId}</p>
+      <HighlightedQuote text={quote.text} author={quote.author} />
       <Route path={`/quotes/${params.quoteId}/comments`}>
         <Comments />
       </Route>
