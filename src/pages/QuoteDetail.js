@@ -1,5 +1,6 @@
 import { useParams, Route } from "react-router-dom";
 
+import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import Comments from "../components/comments/Comments";
 
 const DUMMY_DATA = [
@@ -19,6 +20,7 @@ const QuoteDetail = () => {
   const params = useParams();
 
   const quote = DUMMY_DATA.find((quote) => quote.id === params.quoteId);
+  console.log(quote);
   return (
     <>
       <h1>Quote Detail page</h1>
