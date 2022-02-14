@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Prompt } from "react-router-dom";
 
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
@@ -7,6 +8,7 @@ import classes from "./QuoteForm.module.css";
 const QuoteForm = (props) => {
   const authorInputRef = useRef();
   const textInputRef = useRef();
+  const [isEntering, setIsEntering] = useState(false);
 
   function submitFormHandler(event) {
     event.preventDefault();
@@ -20,7 +22,7 @@ const QuoteForm = (props) => {
   }
 
   const formFocusedHandler = () => {
-    console.log("focus!!");
+    setIsEntering(true);
   };
 
   return (
