@@ -16,7 +16,9 @@ const QuoteList = (props) => {
   return (
     <>
       <div className={classes.sorting}>
-        <button onClick={changeSortingHandler}>Sort Ascending</button>
+        <button onClick={changeSortingHandler}>
+          Sort {isSortingAscending ? "Descending" : "Ascending"}
+        </button>
       </div>
       <ul className={classes.list}>
         {props.quotes.map((quote) => (
