@@ -8,7 +8,7 @@ const QuoteList = (props) => {
   //built in browser constructor function
   const queryParams = new URLSearchParams(location.search);
 
-  const isSortingAscending = queryParams.get("sort");
+  const isSortingAscending = queryParams.get("sort") === "asc";
 
   const changeSortingHandler = () => {
     history.push(`/quotes?asc`);
