@@ -1,4 +1,4 @@
-import { useParams, Route, Link } from "react-router-dom";
+import { useParams, Route, Link, useRouteMatch } from "react-router-dom";
 
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import Comments from "../components/comments/Comments";
@@ -18,6 +18,9 @@ const DUMMY_DATA = [
 
 const QuoteDetail = () => {
   const params = useParams();
+  const match = useRouteMatch();
+
+  console.log("match: ", match);
 
   const quote = DUMMY_DATA.find((quote) => quote.id === params.quoteId);
 
