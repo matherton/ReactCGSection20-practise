@@ -20,8 +20,6 @@ const QuoteDetail = () => {
   const params = useParams();
   const match = useRouteMatch();
 
-  console.log("match: ", match);
-
   const quote = DUMMY_DATA.find((quote) => quote.id === params.quoteId);
 
   if (!quote) {
@@ -31,14 +29,14 @@ const QuoteDetail = () => {
   return (
     <>
       <HighlightedQuote text={quote.text} author={quote.author} />
-      <Route path={`/quotes/${params.quoteId}`} exact>
+      <Route path={match.path} exact>
         <div className="centered">
           <Link className="btn--flat" to={`/quotes/${params.quoteId}/comments`}>
             Load Comments
           </Link>
         </div>
       </Route>
-      <Route path={`/quotes/${params.quoteId}/comments`}>
+      <Route path={`${match.path}/comments`}>
         <Comments />
       </Route>
     </>
