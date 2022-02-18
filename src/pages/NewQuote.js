@@ -8,7 +8,7 @@ const NewQuote = () => {
   const { sendRequest, status } = useHttp(addQuote);
 
   const addQuoteHandler = (quoteData) => {
-    console.log(quoteData);
+    sendRequest(quoteData);
 
     history.push("/quotes");
   };
