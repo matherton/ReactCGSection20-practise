@@ -9,12 +9,14 @@ const NewQuote = () => {
   const { sendRequest, status } = useHttp(addQuote);
   const history = useHistory();
 
-  useEffect(() => {}, [status]);
+  useEffect(() => {
+    if (status === "completed") {
+      history.push("/quotes");
+    }
+  }, [status, history]);
 
   const addQuoteHandler = (quoteData) => {
     sendRequest(quoteData);
-
-    history.push("/quotes");
   };
   return (
     <>
