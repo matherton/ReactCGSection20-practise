@@ -38,6 +38,10 @@ const AllQuotes = () => {
     );
   }
 
+  if (error) {
+    <p className="centered focussed">{error}</p>;
+  }
+
   return (
     <>
       <h1>All Quotes page</h1>
