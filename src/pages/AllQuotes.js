@@ -1,16 +1,16 @@
 import { useEffect } from "react";
-import useHttp from "../components/hooks/use-http";
-import { getAllQuotes } from "../components/lib/api";
 
 import QuoteList from "../components/quotes/QuoteList";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import NoQuotesFound from "../components/quotes/NoQuotesFound";
+import useHttp from "../components/hooks/use-http";
+import { getAllQuotes } from "../components/lib/api";
 
 const AllQuotes = () => {
   const {
     sendRequest,
     status,
-    date: loadedQuotes,
+    data: loadedQuotes,
     error,
   } = useHttp(getAllQuotes, true);
 
@@ -27,19 +27,14 @@ const AllQuotes = () => {
   }
 
   if (error) {
-    <p className="centered focussed">{error}</p>;
+    return <p className="centered focused">{error}</p>;
   }
 
   if (status === "completed" && (!loadedQuotes || loadedQuotes.length === 0)) {
     return <NoQuotesFound />;
   }
 
-  return (
-    <>
-      <h1>All Quotes page</h1>
-      <QuoteList quotes={loadedQuotes} />
-    </>
-  );
+  return <QuoteList quotes={loadedQuotes} />;
 };
 
 export default AllQuotes;
