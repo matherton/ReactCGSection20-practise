@@ -4,6 +4,7 @@ import { getAllQuotes } from "../components/lib/api";
 
 import QuoteList from "../components/quotes/QuoteList";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
+import NoQuotesFound from "../components/quotes/NoQuotesFound";
 
 const DUMMY_DATA = [
   {
@@ -40,6 +41,10 @@ const AllQuotes = () => {
 
   if (error) {
     <p className="centered focussed">{error}</p>;
+  }
+
+  if (status === "completed" && (!loadedQuotes || loadedQuotes.length === 0)) {
+    return <NoQuotesFound />;
   }
 
   return (
