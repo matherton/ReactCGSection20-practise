@@ -16,7 +16,7 @@ const DUMMY_DATA = [
 ];
 
 const AllQuotes = () => {
-  useHttp(getAllQuotes);
+  useHttp(getAllQuotes, true);
   return (
     <>
       <h1>All Quotes page</h1>
