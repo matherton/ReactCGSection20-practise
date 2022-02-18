@@ -6,19 +6,6 @@ import QuoteList from "../components/quotes/QuoteList";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import NoQuotesFound from "../components/quotes/NoQuotesFound";
 
-const DUMMY_DATA = [
-  {
-    id: "p1",
-    author: "Mark",
-    text: "Learning React is fun!",
-  },
-  {
-    id: "p2",
-    author: "Matthew",
-    text: "Learning to ride a bike is fun!",
-  },
-];
-
 const AllQuotes = () => {
   const {
     sendRequest,
@@ -50,7 +37,7 @@ const AllQuotes = () => {
   return (
     <>
       <h1>All Quotes page</h1>
-      <QuoteList quotes={DUMMY_DATA} />
+      <QuoteList quotes={loadedQuotes} />
     </>
   );
 };
