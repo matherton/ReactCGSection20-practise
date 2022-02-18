@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useHttp from "../components/hooks/use-http";
 import { getAllQuotes } from "../components/lib/api";
 import QuoteList from "../components/quotes/QuoteList";
@@ -16,7 +17,17 @@ const DUMMY_DATA = [
 ];
 
 const AllQuotes = () => {
-  const { sendRequest, status } = useHttp(getAllQuotes, true);
+  const {
+    sendRequest,
+    status,
+    date: loadedQuotes,
+    error,
+  } = useHttp(getAllQuotes, true);
+
+  useEffect(() => {
+    sendRequest();
+  }, [sendRequest]);
+
   return (
     <>
       <h1>All Quotes page</h1>
