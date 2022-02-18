@@ -21,7 +21,10 @@ const NewQuote = () => {
   return (
     <>
       <h1>New Quote Page</h1>
-      <QuoteForm onAddQuote={addQuoteHandler} />
+      <QuoteForm
+        isLoading={status === "pending"}
+        onAddQuote={addQuoteHandler}
+      />
     </>
   );
 };
