@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import useHttp from "../components/hooks/use-http";
 import { getAllQuotes } from "../components/lib/api";
+
 import QuoteList from "../components/quotes/QuoteList";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
 
 const DUMMY_DATA = [
   {
@@ -27,6 +29,14 @@ const AllQuotes = () => {
   useEffect(() => {
     sendRequest();
   }, [sendRequest]);
+
+  if (status === "pending") {
+    return (
+      <div className="centered">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   return (
     <>
