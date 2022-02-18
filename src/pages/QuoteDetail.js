@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, Route, Link, useRouteMatch } from "react-router-dom";
 
 import useHttp from "../components/hooks/use-http";
@@ -22,6 +23,7 @@ const QuoteDetail = () => {
   const params = useParams();
   const match = useRouteMatch();
 
+  const { quoteId } = params;
   const {
     sendRequest,
     status,
@@ -29,7 +31,9 @@ const QuoteDetail = () => {
     error,
   } = useHttp(getSingleQuote, true);
 
-  const quote = DUMMY_DATA.find((quote) => quote.id === params.quoteId);
+  useEffect(() => {
+    sendRequest(quoteId);
+  }, [sendRequest, quoteId]);
 
   if (!quote) {
     return <p>No quote found!</p>;
