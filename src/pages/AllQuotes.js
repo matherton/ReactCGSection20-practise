@@ -1,4 +1,6 @@
-import QuoteList from "./../components/quotes/QuoteList";
+import useHttp from "../components/hooks/use-http";
+import { getAllQuotes } from "../components/lib/api";
+import QuoteList from "../components/quotes/QuoteList";
 
 const DUMMY_DATA = [
   {
@@ -14,6 +16,7 @@ const DUMMY_DATA = [
 ];
 
 const AllQuotes = () => {
+  useHttp(getAllQuotes);
   return (
     <>
       <h1>All Quotes page</h1>
