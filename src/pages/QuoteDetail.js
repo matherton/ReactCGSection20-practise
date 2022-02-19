@@ -1,28 +1,15 @@
 import { useEffect } from "react";
 import { useParams, Route, Link, useRouteMatch } from "react-router-dom";
 
+import HighlightedQuote from "../components/quotes/HighlightedQuote";
+import Comments from "../components/comments/Comments";
 import useHttp from "../components/hooks/use-http";
 import { getSingleQuote } from "../components/lib/api";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
-import HighlightedQuote from "../components/quotes/HighlightedQuote";
-import Comments from "../components/comments/Comments";
-
-const DUMMY_DATA = [
-  {
-    id: "p1",
-    author: "Mark",
-    text: "Learning React is fun!",
-  },
-  {
-    id: "p2",
-    author: "Matthew",
-    text: "Learning to ride a bike is fun!",
-  },
-];
 
 const QuoteDetail = () => {
-  const params = useParams();
   const match = useRouteMatch();
+  const params = useParams();
 
   const { quoteId } = params;
   const {
@@ -37,9 +24,11 @@ const QuoteDetail = () => {
   }, [sendRequest, quoteId]);
 
   if (status === "pending") {
-    <div className="centered">
-      <LoadingSpinner />
-    </div>;
+    return (
+      <div className="centered">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (error) {
