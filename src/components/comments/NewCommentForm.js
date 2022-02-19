@@ -8,10 +8,12 @@ import LoadingSpinner from "../UI/LoadingSpinner";
 const NewCommentForm = (props) => {
   const commentTextRef = useRef();
   const { sendRequest, status, error } = useHttp(addComment);
+  const { onAddedComment } = props;
   useEffect(() => {
     if (status === "completed" && !error) {
+      onAddedComment();
     }
-  }, [status, error]);
+  }, [status, error, onAddedComment]);
 
   const submitFormHandler = (event) => {
     event.preventDefault();
