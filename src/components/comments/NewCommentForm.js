@@ -11,9 +11,12 @@ const NewCommentForm = (props) => {
   const submitFormHandler = (event) => {
     event.preventDefault();
 
+    const enteredText = commentTextRef.current.value;
     // optional: Could validate here
 
-    sendRequest();
+    sendRequest({
+      text: enteredText,
+    });
   };
 
   return (
