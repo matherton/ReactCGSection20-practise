@@ -12,7 +12,7 @@ const Comments = () => {
     setIsAddingComment(true);
   };
 
-  const addedCommenHandler = () => {};
+  const addedCommentHandler = () => {};
 
   return (
     <section className={classes.comments}>
@@ -25,7 +25,7 @@ const Comments = () => {
       {isAddingComment && (
         <NewCommentForm
           quoteId={params.quoteId}
-          onAddedComment={addedCommenHandler}
+          onAddedComment={addedCommentHandler}
         />
       )}
       <p>Comments...</p>
