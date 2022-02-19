@@ -18,7 +18,7 @@ const Comments = () => {
           Add a Comment
         </button>
       )}
-      {isAddingComment && <NewCommentForm />}
+      {isAddingComment && <NewCommentForm quoteId={} onAddedComment={} />}
       <p>Comments...</p>
     </section>
   );
