@@ -3,10 +3,19 @@ import { useParams } from "react-router-dom";
 
 import classes from "./Comments.module.css";
 import NewCommentForm from "./NewCommentForm";
+import useHttp from "../hooks/use-http";
+import { getAllComments } from "../lib/api";
 
 const Comments = () => {
   const [isAddingComment, setIsAddingComment] = useState(false);
   const params = useParams();
+
+  const {
+    sendRequest,
+    status,
+    data: loadedComments,
+    error,
+  } = useHttp(getAllComments);
 
   const startAddCommentHandler = () => {
     setIsAddingComment(true);
