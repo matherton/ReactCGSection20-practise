@@ -56,7 +56,7 @@ const Comments = () => {
       )}
       {isAddingComment && (
         <NewCommentForm
-          quoteId={params.quoteId}
+          quoteId={quoteId}
           onAddedComment={addedCommentHandler}
         />
       )}

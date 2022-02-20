@@ -21,13 +21,7 @@ const NewCommentForm = (props) => {
     const enteredText = commentTextRef.current.value;
     // optional: Could validate here
 
-    sendRequest(
-      {
-        text: enteredText,
-      },
-      props.quoteId
-    );
-  };
+    sendRequest({ text: enteredText }, props.quoteId);
 
   return (
     <form className={classes.form} onSubmit={submitFormHandler}>
