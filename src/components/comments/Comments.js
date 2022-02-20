@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import classes from "./Comments.module.css";
@@ -10,7 +10,13 @@ const Comments = () => {
   const [isAddingComment, setIsAddingComment] = useState(false);
   const params = useParams();
 
+  const { quoteId } = useParams();
+
   const { sendRequest, status, data: loadedComments } = useHttp(getAllComments);
+
+  useEffect(() => {
+    sendRequest(quoteId);
+  }, [sendRequest, quoteId]);
 
   const startAddCommentHandler = () => {
     setIsAddingComment(true);
