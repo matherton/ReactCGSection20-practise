@@ -36,10 +36,16 @@ const Comments = () => {
     );
   }
 
-  if (status === "completed" && loadedComments) {
+  if (status === "completed" && loadedComments && loadedComments.length > 0) {
     comments = <CommentsList comments={loadedComments} />;
   }
 
+  if (
+    status === "completed" &&
+    (!loadedComments || loadedComments.length === 0)
+  ) {
+    comments = <p className="centered">No commments where added yet!</p>;
+  }
   return (
     <section className={classes.comments}>
       <h2>User Comments</h2>
