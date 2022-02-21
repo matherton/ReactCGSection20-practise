@@ -10,20 +10,23 @@ import CommentsList from "./CommentsList";
 
 const Comments = () => {
   const [isAddingComment, setIsAddingComment] = useState(false);
+  const params = useParams();
 
-  const { quoteId } = useParams();
+  const { quoteId } = params;
 
   const { sendRequest, status, data: loadedComments } = useHttp(getAllComments);
 
   useEffect(() => {
     sendRequest(quoteId);
-  }, [sendRequest, quoteId]);
+  }, [quoteId, sendRequest]);
 
   const startAddCommentHandler = () => {
     setIsAddingComment(true);
   };
 
-  const addedCommentHandler = useCallback(() => {}, []);
+  const addedCommentHandler = useCallback(() => {
+    sendRequest(quoteId);
+  }, [sendRequest, quoteId]);
 
   let comments;
 
@@ -43,8 +46,9 @@ const Comments = () => {
     status === "completed" &&
     (!loadedComments || loadedComments.length === 0)
   ) {
-    comments = <p className="centered">No commments where added yet!</p>;
+    comments = <p className="centered">No comments were added yet!</p>;
   }
+
   return (
     <section className={classes.comments}>
       <h2>User Comments</h2>
