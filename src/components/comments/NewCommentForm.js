@@ -21,24 +21,25 @@ const NewCommentForm = (props) => {
     const enteredText = commentTextRef.current.value;
     // optional: Could validate here
 
-    sendRequest({commentData: { text: enteredText }, quoteId: props.quoteId});
+    sendRequest({ commentData: { text: enteredText }, quoteId: props.quoteId });
 
-  return (
-    <form className={classes.form} onSubmit={submitFormHandler}>
-      {status === "pending" && (
-        <div className="centered">
-          <LoadingSpinner />
+    return (
+      <form className={classes.form} onSubmit={submitFormHandler}>
+        {status === "pending" && (
+          <div className="centered">
+            <LoadingSpinner />
+          </div>
+        )}
+        <div className={classes.control} onSubmit={submitFormHandler}>
+          <label htmlFor="comment">Your Comment</label>
+          <textarea id="comment" rows="5" ref={commentTextRef}></textarea>
         </div>
-      )}
-      <div className={classes.control} onSubmit={submitFormHandler}>
-        <label htmlFor="comment">Your Comment</label>
-        <textarea id="comment" rows="5" ref={commentTextRef}></textarea>
-      </div>
-      <div className={classes.actions}>
-        <button className="btn">Add Comment</button>
-      </div>
-    </form>
-  );
+        <div className={classes.actions}>
+          <button className="btn">Add Comment</button>
+        </div>
+      </form>
+    );
+  };
 };
 
 export default NewCommentForm;
