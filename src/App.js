@@ -5,14 +5,20 @@ import AllQuotes from "./pages/AllQuotes";
 import QuoteDetail from "./pages/QuoteDetail";
 import Layout from "./components/layout/Layout";
 import NotFound from "./pages/NotFound";
-import { Suspense } from "react/cjs/react.production.min";
+import LoadingSpinner from "./components/UI/LoadingSpinner";
 
 const NewQuote = React.lazy(() => import("./pages/NewQuote"));
 
 function App() {
   return (
     <Layout>
-      <Suspense>
+      <Suspense
+        fallback={
+          <div className="centered">
+            <LoadingSpinner />
+          </div>
+        }
+      >
         <Switch>
           <Route path="/" exact>
             <Redirect to="quotes" />
